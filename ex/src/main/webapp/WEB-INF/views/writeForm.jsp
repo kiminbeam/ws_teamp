@@ -6,32 +6,30 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<jsp:include page="header.jsp"></jsp:include>
 <body>
-<h1>WriteForm Page</h1>
-<hr>
-<table width="500" cellpadding="0" cellspacing="0" border="1">
-
-            <form action="write" method="post">
-            <tr>
-                <td>제목</td>
-                <td><input type="text" name="title" size="50"></td>
+<h1>──── WriteForm Page ────</h1>
+<br>
+	<table>
+            <form action="write" method="post" class="writeform">
+            <tr class="formhead">
+                <th>제목</th>
+                <td><input type="text" name="title" placeholder="제목을 입력하세요."></td>
+                <th>작성자</th>
+                <td><input type="text" name="writer" placeholder="이름을 입력하세요."></td>
+            </tr>
+            <tr class="formbody">
+                <th>내용</th>
+                <td colspan="3"><input type="text" name="content" class="content" placeholder="내용을 입력하세요.">
             </tr>
             <tr>
-                <td>작성자</td>
-                <td><input type="text" name="writer" size="50"></td>
-            </tr>
-            <tr>
-                <td>내용</td>
-                <td><input type="text" name="content" size="50">
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <input type="submit" value="입력">&nbsp;&nbsp;
-                    <a href="index">목록보기</a>
+                <td colspan="4">
+                    <input type="submit" value="입력" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" onclick="location.href="index" class="btn">목록보기</button>
                 </td>
             </tr>
         	</form>
-
+	</table>
 
 </body>
 </html>
