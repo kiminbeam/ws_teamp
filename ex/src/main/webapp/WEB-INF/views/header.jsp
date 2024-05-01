@@ -9,9 +9,10 @@
 </head>
 <body>
 <div class="header">
-  <h1>Team Project Ex
+  <h1>Team Project Ex Ver1.0
     <span>board</span>
   </h1>
+ 
 </div>
 </body>
 </html>

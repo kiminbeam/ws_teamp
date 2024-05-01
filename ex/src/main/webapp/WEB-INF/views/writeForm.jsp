@@ -11,7 +11,7 @@
 <h1>──── WriteForm Page ────</h1>
 <br>
 	<table>
-            <form action="write" method="post" class="writeform">
+            <form action="write" method="post" class="writeform" name="inputForm" onsubmit="return checkField();">
             <tr class="formhead">
                 <th>제목</th>
                 <td><input type="text" name="title" placeholder="제목을 입력하세요."></td>
@@ -25,11 +25,29 @@
             <tr>
                 <td colspan="4">
                     <input type="submit" value="입력" class="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button type="button" onclick="location.href="index" class="btn">목록보기</button>
+                    <button type="button" onclick="location.href='list'" class="btn">목록보기</button>
                 </td>
             </tr>
         	</form>
 	</table>
 
+
+	<script>
+		function checkField(){
+			let inputs = document.inputForm;
+			if(!inputs.title.value){
+				alert("제목을 입력하세요.");
+				return false;
+			}
+			if(!inputs.writer.value){	
+				alert("이름을 입력하세요.");
+				return false;
+			}
+			if(!inputs.content.value){
+				alert("내용을 입력하세요.");
+				return false;
+			}		
+		}
+	</script>
 </body>
 </html>
