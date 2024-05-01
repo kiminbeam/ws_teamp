@@ -8,8 +8,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.example.ex.dto.ListDto;
 
+@Repository
 public class ListDao implements IListDao{
 	
 	Connection conn = DBcon.getConnection();
@@ -68,11 +71,11 @@ public class ListDao implements IListDao{
 
 	@Override
 	public void save(ListDto dto) {
-		String sql = "insert into tList values (?,?,?,?)";
+		String sql = "insert into tList (title,writer,content) values (?,?,?)";
 	
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, dto.getId());
+			//pstmt.setInt(1, dto.getId());
 			pstmt.setString(2,dto.getTitle());
 			pstmt.setString(3, dto.getWriter());
 			pstmt.setString(4, dto.getContent());
