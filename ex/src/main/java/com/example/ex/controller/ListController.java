@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.ex.dto.ListDto;
 import com.example.ex.service.ListService;
@@ -21,19 +20,21 @@ public class ListController {
 	ListService service;
 	
 	@RequestMapping("/")
-	public String index() {
+	public String index(Model model) {
+		List<ListDto> list = service.getList();
+		model.addAttribute("list",list);
 		return "index";
 	}
 
 	@RequestMapping("/list")
-	public @ResponseBody String list(Model model){
+	public String list(Model model){
 		List<ListDto> list = service.getList();
 		model.addAttribute("list",list);
-		return "list";
+		return "index";
 	}
 
 	@RequestMapping("/detail")
-	public @ResponseBody String detail(HttpServletRequest req, Model model){
+	public String detail(HttpServletRequest req, Model model){
 		String id_ = req.getParameter("id");
 		int id = Integer.parseInt(id_);
 		ListDto dto = service.get(id);
@@ -48,15 +49,26 @@ public class ListController {
     }
 
 	@RequestMapping("/write")
-	public String write(ListDto dto) {
+	public String write(HttpServletRequest req) {
+		String title = req.getParameter("title");
+		String writer = req.getParameter("writer");
+		String content = req.getParameter("content");
+		
+		ListDto dto = new ListDto();
+		dto.setTitle(title);
+		dto.setWriter(writer);
+		dto.setContent(content);
+		
         service.save(dto);
-        return "redirect:list";
+        return "redirect:/list";
     }
 
 	@RequestMapping("/delete")
-    public String delete(int id) {
+    public String delete(HttpServletRequest req) {
+		String id_ = req.getParameter("bno");
+		int id = Integer.parseInt(id_);
         service.delete(id);
-        return "redirect:list";
+        return "redirect:/list";
     }
 
 }
