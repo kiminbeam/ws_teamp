@@ -50,7 +50,7 @@ public class ListDao implements IListDao{
 		
 		ListDto dto = new ListDto();
 		
-		String sql = "select * from tList where id=" + id;
+		String sql = "select * from tList where bno=" + id;
 		
 		try {
 			Statement stmt = conn.createStatement();
@@ -90,7 +90,7 @@ public class ListDao implements IListDao{
 
 	@Override
 	public void delete(int id) {
-		String sql = "delete from tList where id=" + id;
+		String sql = "delete from tList where bno=" + id;
 		
 		try {
 			Statement stmt = conn.createStatement();
