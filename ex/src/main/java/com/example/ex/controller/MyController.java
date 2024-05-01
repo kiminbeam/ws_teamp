@@ -8,6 +8,6 @@ public class MyController {
 	
 	@RequestMapping("/")
 	public String index() {
-		return "index";
+		return "writeForm";
 	}
 }
