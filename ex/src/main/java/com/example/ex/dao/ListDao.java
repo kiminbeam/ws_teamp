@@ -76,9 +76,9 @@ public class ListDao implements IListDao{
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			//pstmt.setInt(1, dto.getId());
-			pstmt.setString(2,dto.getTitle());
-			pstmt.setString(3, dto.getWriter());
-			pstmt.setString(4, dto.getContent());
+			pstmt.setString(1,dto.getTitle());
+			pstmt.setString(2, dto.getWriter());
+			pstmt.setString(3, dto.getContent());
 			
 			pstmt.executeUpdate();
 			
